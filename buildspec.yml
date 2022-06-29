@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm install 
+      - npm run build     
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the code in S3...
