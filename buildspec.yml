@@ -12,3 +12,6 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the code in S3...
+      - aws s3 sync build/ s3://smartidentityportal
+
+   
