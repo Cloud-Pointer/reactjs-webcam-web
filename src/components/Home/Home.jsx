@@ -46,7 +46,7 @@ const Home = () => {
         <div className="home-container">
             <div className="container">
                 <div className="text">
-                    <h1>Enter the Office!</h1>
+                    <h1>Take Photo!</h1>
                     <form className="form">
                         <Capture setUploadedImage = {setUploadedImage}/>
                            <button id="login-button" onClick={(e) => submitForm(e)}>Submit</button>
