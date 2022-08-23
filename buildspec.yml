@@ -3,13 +3,16 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 499702909061.dkr.ecr.us-east-2.amazonaws.com/smartidentityui
   build:
     commands:
       - echo Build started on `date`
-      - npm install
-      - npm run build
+      - echo Building the Docker image...
+      - docker build -t smartidentityui:aws-smartidentityui .
+      - docker tag smartidentityui:aws-smartidentityui 499702909061.dkr.ecr.us-east-2.amazonaws.com/smartidentityui:aws-smartidentityui      
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Pushing the code in S3...
-      - aws s3 sync build/ s3://$targetS3Bucket
+      - echo Pushing the Docker image...
+      - docker push 499702909061.dkr.ecr.us-east-2.amazonaws.com/smartidentityui:aws-smartidentityui
